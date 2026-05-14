@@ -1,6 +1,9 @@
 #!/bin/bash -e
 set -o pipefail
 
+# The pi-gen builder container doesn't include python3 by default.
+apt-get update -qq && apt-get install -y -qq python3 >/dev/null
+
 SK_DATA="${ROOTFS_DIR}/var/lib/container-apps/marine-signalk-server-container/data/data"
 PLUGIN_NAME="ais-forwarder"
 PLUGIN_VERSION="0.4.1"
